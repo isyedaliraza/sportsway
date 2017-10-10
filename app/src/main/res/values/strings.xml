@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SportsWay</string>
+    <string name="login_name">Login</string>
+    <string name="activity_title_home">Home</string>
+    <string name="home">Home</string>
+    <string name="events">Events</string>
+    <string name="tickets">Tickets</string>
+</resources>
