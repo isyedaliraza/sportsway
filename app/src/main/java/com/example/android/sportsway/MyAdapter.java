@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.android.sportsway.Model.Event;
+import com.example.android.sportsway.Model.EventOnline;
 
 import java.util.ArrayList;
 
@@ -27,12 +28,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         public TextView tv1;
         public TextView tv2;
         public TextView tv3;
+        public TextView tv4;
+        public TextView tv5;
         public ViewHolder(View v) {
             super(v);
             cardView = v.findViewById(R.id.card_view);
-            tv1 = v.findViewById(R.id.title_text);
-            tv2 = v.findViewById(R.id.venue_text);
-            tv3 = v.findViewById(R.id.time_text);
+            tv1 = v.findViewById(R.id.event_name_text);
+            tv2 = v.findViewById(R.id.event_id_text);
+            tv3 = v.findViewById(R.id.event_location_text);
+            tv4 = v.findViewById(R.id.event_date_text);
+            tv5 = v.findViewById(R.id.event_time_text);
         }
     }
 
@@ -58,9 +63,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
 
-        holder.tv1.setText(mDataset.get(position).getTitle());
-        holder.tv2.setText("Venue : " + mDataset.get(position).getCity_name());
-        holder.tv3.setText("Time  : " + mDataset.get(position).getStart_time());
+        holder.tv1.setText(mDataset.get(position).getEvent_name());
+        holder.tv2.setText("Id: " + Integer.toString(mDataset.get(position).get_id()));
+        holder.tv3.setText("Venue: " + mDataset.get(position).getEvent_location());
+        holder.tv4.setText("Date: " + mDataset.get(position).getEvent_date());
+        holder.tv5.setText("Start Time: " + mDataset.get(position).getEvent_start_time());
     }
 
     // Return the size of your dataset (invoked by the layout manager)

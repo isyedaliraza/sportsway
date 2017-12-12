@@ -1,6 +1,7 @@
 package com.example.android.sportsway;
 
 import android.Manifest;
+import android.content.Intent;
 import android.os.Build;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -83,6 +84,14 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
             finish();
+        }
+        else if (id == R.id.action_add_event) {
+            Intent intent = new Intent(this, AddEventActivity.class);
+            this.startActivity(intent);
+        }
+        else if (id == R.id.action_delete_event) {
+            Intent intent = new Intent(this, DeleteEventActivity.class);
+            this.startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);

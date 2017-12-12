@@ -1,6 +1,6 @@
 package com.example.android.sportsway.Utility;
 
-import com.example.android.sportsway.Model.Event;
+import com.example.android.sportsway.Model.EventOnline;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -19,15 +19,15 @@ import javax.xml.parsers.DocumentBuilderFactory;
  */
 
 public class XmlParser {
-    private ArrayList<Event> events;
+    private ArrayList<EventOnline> eventOnlines;
     private String data;
 
     public XmlParser(String text) {
         this.data = text;
-        this.events = new ArrayList<Event>();
+        this.eventOnlines = new ArrayList<EventOnline>();
     }
 
-    public ArrayList<Event> getEvents() {
+    public ArrayList<EventOnline> getEvents() {
         try {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -44,17 +44,17 @@ public class XmlParser {
                 Node node = nList.item(i);
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element element2 = (Element) node;
-                    Event event = new Event();
-                    event.setTitle(getValue("title", element2));
-                    event.setCity_name(getValue("city_name", element2));
-                    event.setStart_time(getValue("start_time", element2));
-                    events.add(event);
+                    EventOnline eventOnline = new EventOnline();
+                    eventOnline.setTitle(getValue("title", element2));
+                    eventOnline.setCity_name(getValue("city_name", element2));
+                    eventOnline.setStart_time(getValue("start_time", element2));
+                    eventOnlines.add(eventOnline);
                 }
             }
 
         } catch (Exception e) {e.printStackTrace();}
 
-        return events;
+        return eventOnlines;
     }
 
     private static String getValue(String tag, Element element) {
