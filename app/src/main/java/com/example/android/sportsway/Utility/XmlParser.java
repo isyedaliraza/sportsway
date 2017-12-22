@@ -14,10 +14,6 @@ import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-/**
- * Created by Syed Ali Raza on 12/2/2017.
- */
-
 public class XmlParser {
     private ArrayList<EventOnline> eventOnlines;
     private String data;
@@ -27,6 +23,12 @@ public class XmlParser {
         this.eventOnlines = new ArrayList<EventOnline>();
     }
 
+    private static String getValue(String tag, Element element) {
+        NodeList nodeList = element.getElementsByTagName(tag).item(0).getChildNodes();
+        Node node = nodeList.item(0);
+        return node.getNodeValue();
+    }
+
     public ArrayList<EventOnline> getEvents() {
         try {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -34,12 +36,12 @@ public class XmlParser {
             InputStream is = new ByteArrayInputStream(data.getBytes("UTF-8"));
             Document doc = dBuilder.parse(is);
 
-            Element element=doc.getDocumentElement();
+            Element element = doc.getDocumentElement();
             element.normalize();
 
             NodeList nList = doc.getElementsByTagName("event");
 
-            for (int i=0; i<nList.getLength(); i++) {
+            for (int i = 0; i < nList.getLength(); i++) {
 
                 Node node = nList.item(i);
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
@@ -52,15 +54,11 @@ public class XmlParser {
                 }
             }
 
-        } catch (Exception e) {e.printStackTrace();}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return eventOnlines;
-    }
-
-    private static String getValue(String tag, Element element) {
-        NodeList nodeList = element.getElementsByTagName(tag).item(0).getChildNodes();
-        Node node = nodeList.item(0);
-        return node.getNodeValue();
     }
 
 }
