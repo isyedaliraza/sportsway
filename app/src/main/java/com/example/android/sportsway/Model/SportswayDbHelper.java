@@ -20,15 +20,8 @@ public class SportswayDbHelper extends SQLiteOpenHelper {
     private static final String SQL_CREATE_TABLE_EVENT = "CREATE TABLE " +
             EventEntry.TABLE_NAME + "(" + EventEntry._ID + " INTEGER PRIMARY KEY NOT NULL, " +
             EventEntry.COLUMN_EVENT_NAME + " TEXT NOT NULL, " + EventEntry.COLUMN_EVENT_LOCATION +
-            " TEXT NOT NULL, " + EventEntry.COLUMN_START_TIME + " TEXT NOT NULL, " +
-            EventEntry.COLUMN_EVENT_DATE + " TEXT NOT NULL)";
-    private static final String SQL_CREATE_TABLE_TICKET = "CREATE TABLE " + TicketEntry.TABLE_NAME +
-            "(" + TicketEntry._ID + " INTEGER PRIMARY KEY NOT NULL, " +
-            TicketEntry.COLUMN_TICKET_CATEGORY + " TEXT NOT NULL, " +
-            TicketEntry.COLUMN_TICKET_AVAILABLE_TICKETS + " INTEGER NOT NULL, " +
-            TicketEntry.COLUMN_TICKET_PRICE + " INTEGER NOT NULL, " + TicketEntry.COLUMN_EVENT_ID +
-            " INTEGER NOT NULL, FOREIGN KEY(" + TicketEntry.COLUMN_EVENT_ID + ") REFERENCES " +
-            EventEntry.TABLE_NAME + "(" + EventEntry._ID + "))";
+            " TEXT NOT NULL, " + EventEntry.COLUMN_START_TIME + " TEXT NOT NULL, " + EventEntry.COLUMN_TICKETS +
+            " INTEGER NOT NULL)";
     private static final String SQL_CREATE_TABLE_RESERVATION = "CREATE TABLE " + ReservationEntry.TABLE_NAME +
             "(" + ReservationEntry._ID + " INTEGER PRIMARY KEY NOT NULL, " +
             ReservationEntry.COLUMN_USER_ID + " INTEGER NOT NULL, " + ReservationEntry.COLUMN_EVENT_ID +
@@ -51,7 +44,6 @@ public class SportswayDbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_TABLE_USER);
         db.execSQL(SQL_CREATE_TABLE_EVENT);
-        db.execSQL(SQL_CREATE_TABLE_TICKET);
         db.execSQL(SQL_CREATE_TABLE_RESERVATION);
         // add dummy data below
         ContentValues values = new ContentValues();

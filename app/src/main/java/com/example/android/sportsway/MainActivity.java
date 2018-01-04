@@ -1,11 +1,20 @@
 package com.example.android.sportsway;
 
 import android.Manifest;
+import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Build;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -14,6 +23,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,6 +31,23 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.android.sportsway.Model.Event;
+import com.example.android.sportsway.Model.EventOnline;
+import com.example.android.sportsway.Model.SportswayContract;
+import com.example.android.sportsway.Model.SportswayDbHelper;
+import com.example.android.sportsway.Utility.XmlParser;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -66,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -84,14 +110,6 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
             finish();
-        }
-        else if (id == R.id.action_add_event) {
-            Intent intent = new Intent(this, AddEventActivity.class);
-            this.startActivity(intent);
-        }
-        else if (id == R.id.action_delete_event) {
-            Intent intent = new Intent(this, DeleteEventActivity.class);
-            this.startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
@@ -117,8 +135,8 @@ public class MainActivity extends AppCompatActivity {
                     EventsFragment eventsFragment = new EventsFragment();
                     return eventsFragment;
                 case 2:
-                    TicketsFragment ticketsFragment = new TicketsFragment();
-                    return ticketsFragment;
+                    ReservationFragment reservationFragment = new ReservationFragment();
+                    return reservationFragment;
             }
             return null;
         }
@@ -137,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
                 case 1:
                     return "EVENTS";
                 case 2:
-                    return "TICKETS";
+                    return "RESERVATIONS";
             }
             return null;
         }

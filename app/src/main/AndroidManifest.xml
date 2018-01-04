@@ -24,8 +24,7 @@
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".AddEventActivity" />
-        <activity android:name=".DeleteEventActivity"></activity>
+        <activity android:name=".ReservationActivity"></activity>
     </application>
 
 </manifest>

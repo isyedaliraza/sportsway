@@ -5,7 +5,7 @@ public class Event {
     private String event_name;
     private String event_location;
     private String event_start_time;
-    private String event_date;
+    private int event_tickets;
 
     public int get_id() {
         return _id;
@@ -39,11 +39,11 @@ public class Event {
         this.event_start_time = event_start_time;
     }
 
-    public String getEvent_date() {
-        return event_date;
+    public int getEvent_tickets() {
+        return event_tickets;
     }
 
-    public void setEvent_date(String event_date) {
-        this.event_date = event_date;
+    public void setEvent_tickets(int event_tickets) {
+        this.event_tickets = event_tickets;
     }
 }

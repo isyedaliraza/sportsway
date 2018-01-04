@@ -21,7 +21,7 @@ public final class SportswayContract {
         public static final String COLUMN_EVENT_NAME = "event_name";
         public static final String COLUMN_EVENT_LOCATION = "event_location";
         public static final String COLUMN_START_TIME = "event_start_time";
-        public static final String COLUMN_EVENT_DATE = "event_date";
+        public static final String COLUMN_TICKETS = "event_tickets";
     }
 
     /* Inner class that defines the table contents */

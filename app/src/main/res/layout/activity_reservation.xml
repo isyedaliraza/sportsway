@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context="com.example.android.sportsway.ReservationActivity">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/reservation_card_view"
+        android:layout_marginBottom="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/reservation_tickets_left"
+            tools:text="94 Tickets left"
+            android:gravity="center"
+            android:fontFamily="sans-serif-smallcaps"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Display1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </android.support.v7.widget.CardView>
+    <LinearLayout
+        android:id="@+id/reservation_event_details"
+        android:layout_below="@id/reservation_card_view"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/reservation_event_name"
+            tools:text="Hadoop Bootcamp"
+            android:layout_marginBottom="16dp"
+            android:gravity="center"
+            android:fontFamily="sans-serif-smallcaps"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/reservation_event_start_time"
+            tools:text="Start Time: 5:30 PM"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:fontFamily="casual"
+            android:textColor="@android:color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/reservation_ticket_price"
+            tools:text="Ticket Price: Rs. 500"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:fontFamily="casual"
+            android:textColor="@android:color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/reservation_sold_out"
+        android:scaleType="fitCenter"
+        android:layout_centerInParent="true"
+        android:src="@drawable/soldout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/reservation_buy_button"
+        android:text="Buy"
+        android:onClick="buyTicket"
+        android:backgroundTint="@color/colorPrimary"
+        android:layout_alignParentEnd="true"
+        android:textColor="@android:color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+</RelativeLayout>
